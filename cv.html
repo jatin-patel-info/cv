@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatin Patel - Senior Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .timeline-item .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .timeline-item.open .details {
+            max-height: 1000px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <nav class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-bold text-slate-800">Jatin Patel</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-slate-600 hover:bg-slate-200 hover:text-slate-800 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#skills" class="text-slate-600 hover:bg-slate-200 hover:text-slate-800 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#experience" class="text-slate-600 hover:bg-slate-200 hover:text-slate-800 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#education" class="text-slate-600 hover:bg-slate-200 hover:text-slate-800 px-3 py-2 rounded-md text-sm font-medium">Education</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="py-20 md:py-28 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="mb-8">
+                    <img src="jp_dp.jpg" alt="Jatin Patel Profile" class="rounded-full mx-auto shadow-lg border-4 border-sky-200 w-36 h-36">
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">Senior Full Stack Software Developer</h1>
+                <p class="mt-6 text-lg text-slate-600 max-w-3xl mx-auto">
+                    Highly proficient and results-driven Senior Full Stack Software Developer with 8+ years of extensive experience. Proven leader in driving significant application performance improvements, leveraging .NET 8.0, React, Angular, MuleSoft, and Azure DevOps. Proficient in AI-enhanced development and integrating diverse cloud services (AWS, Azure) and third-party APIs like Equifax, Trulioo, Flinks, and Threat Matrix to build robust financial solutions.
+                </p>
+                <div class="mt-8 flex justify-center items-center space-x-6 text-sm">
+                    <a href="mailto:jatin.patel.info@gmail.com" class="font-medium text-sky-600 hover:text-sky-800">jatin.patel.info@gmail.com</a>
+                    <span class="text-slate-300">|</span>
+                    <a href="tel:3437776413" class="font-medium text-sky-600 hover:text-sky-800">(343) 777 6413</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-slate-900">Technical Skills</h2>
+                    <p class="mt-4 text-lg text-slate-600">This section outlines my technical proficiency across various domains. You can explore my skills by clicking on the categories below to filter the list and see the specific technologies and tools I've mastered.</p>
+                </div>
+                <div id="skill-categories" class="mt-12 flex flex-wrap justify-center gap-3">
+                </div>
+                <div id="skill-display" class="mt-8 bg-white p-6 rounded-lg shadow-md min-h-[150px]">
+                    <ul id="skill-list" class="flex flex-wrap gap-3">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-slate-900">Professional Experience</h2>
+                    <p class="mt-4 text-lg text-slate-600">This timeline presents my career progression, highlighting key roles and accomplishments. The chart below visualizes the direct impact of my work on performance and efficiency. Click each role to expand and see detailed contributions.</p>
+                </div>
+
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-slate-800 text-center mb-6">Key Performance Impact</h3>
+                    <p class="text-center text-slate-600 mb-8">My work has led to significant, measurable improvements in application efficiency and performance. This chart highlights two key achievements from my recent projects, demonstrating my focus on delivering tangible results.</p>
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="timeline-container" class="mt-20 max-w-3xl mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-20 md:py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-900">Education</h2>
+                 <p class="mt-4 text-lg text-slate-600">This section details my formal academic qualifications, which form the foundation of my technical expertise.</p>
+                <div class="mt-8 space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-sky-700">Master of Engineering</h3>
+                        <p class="text-slate-600">University of Ottawa | April 2017</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-sky-700">Bachelor of Engineering</h3>
+                        <p class="text-slate-600">G.H. Patel College of Engineering | May 2014</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2024 Jatin Patel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillsData = {
+                'Languages': ['C#', 'JavaScript (ES6+)', 'Python', 'PHP', 'PowerShell', 'SQL', 'KQL (Azure Kusto Query Language)'],
+                'Frameworks & Libraries': ['.NET 8.0', '.NET Core', '.NET Framework', 'MVC 5.0+', 'Angular (v4-latest)', 'React', 'PHP-Laravel', 'Entity Framework', 'LINQ', 'ADO.NET', 'AJAX', 'jQuery', 'Bootstrap', 'SCSS', 'Node.js'],
+                'Databases': ['SQL Server (2017/19)', 'MySQL', 'Oracle DB', 'Redis', 'NoSQL DBs'],
+                'Cloud & Services': ['Azure (including Azure Queue, Azure Event Hub, Azure Integration Services)', 'AWS (AWS Pinpoint)', 'Google Maps API'],
+                'DevOps & CI/CD': ['Azure DevOps', 'Jenkins CI/CD', 'Git', 'GitHub', 'TFS'],
+                'Integration & APIs': ['MuleSoft Anypoint Platform', 'Equifax', 'Trulioo', 'Flinks Account Aggregation', 'Threat Matrix Risk Solutions', 'Docusign', 'Fig Financial', 'AVISO Wealth.'],
+                'Reporting & BI': ['Power BI', 'Excel Power Query', 'SSRS', 'Crystal Reports', 'Google Analytics'],
+                'Testing': ['NUnit', 'Playwright', 'Selenium'],
+                'Other Tools & Methodologies': ['Salesforce Apex Platform', 'UseableNet', 'IIS 10', 'Apache Server', 'Nginx Server', 'AI-Enhanced Development', 'Agile (Scrum Framework)']
+            };
+
+            const experienceData = [
+                {
+                    role: "Senior Full Stack Developer",
+                    company: "Alterna Savings",
+                    period: "Sep. 2019 – Present",
+                    details: [
+                        "Led SDLC from requirement gathering to critical development, managing technology stack decisions and reducing account opening application time by 40%.",
+                        "Spearheaded Enterprise Integration Initiatives: Designed, developed, and implemented Enterprise Service Bus (MuleSoft) to integrate with Banking core and customer-facing applications.",
+                        "Expert in Third-Party API Integrations: Successfully integrated critical external services including Trulioo, AWS Pinpoint, Azure integration services, Flinks, and Threat Matrix.",
+                        "Applied Financial Risk & Fraud Expertise: Specialized in KYC, Fraud Checks, and Risk Assessments for banking applications through third-party integrations.",
+                        "Engineered High-Performance APIs: Developed and supported high-performance, secure REST APIs using .NET and .NET Core, transforming legacy SOAP services to a modern microservice architecture.",
+                        "Enhanced Development Efficiency: Leveraged AI-enhanced development techniques and utilized modern tools like Playwright, Python, and Node.js.",
+                        "Ensured Accessibility Compliance: Converted existing applications into WCAG 2.0 AA accessibility-compliant solutions.",
+                        "Implemented Robust CI/CD Automation: Established a complete CI/CD pipeline using Azure DevOps, automating unit testing, build processes, and deployment."
+                    ]
+                },
+                {
+                    role: "Full Stack Developer",
+                    company: "2Adaptive (2A Consulting)",
+                    period: "Sep. 2018 – Aug. 2019",
+                    details: [
+                        "Delivered a comprehensive project from scratch (Admin site and customer-facing front-end) for Microsoft online courses through the complete SDLC.",
+                        "Implemented the Repository design pattern with Entity Framework (EF) to work with domain-specific objects, adopting a code-first approach.",
+                        "Enhanced application response and performance by approximately 30% through the implementation of AJAX-based calls with caching.",
+                        "Specialized in responsive front-end development, creating templates tailored to client requirements using HTML5, CSS3, Bootstrap 4, and jQuery."
+                    ]
+                },
+                {
+                    role: "Software Developer",
+                    company: "IBI Group",
+                    period: "Jun. 2017 – Aug. 2018",
+                    details: [
+                        "Contributed to the design and development of applications for Transit and Event Management systems.",
+                        "Proficiently handled data retrieval and manipulation using ADO.NET objects, LINQ, and Entity Framework.",
+                        "Developed complex SQL queries, stored procedures, and triggers for retrieving transactional data.",
+                        "Extensively used SSRS for developing and deploying reports."
+                    ]
+                },
+                {
+                    role: "Systems Engineer",
+                    company: "Infosys",
+                    period: "Jun. 2014 – Nov. 2015",
+                    details: [
+                        "Built comprehensive systems and modules using the .NET MVC Framework and Responsive Design.",
+                        "Enhanced existing applications with AngularJS, creating dynamic HTML navigation menus.",
+                        "Utilized Agile Methodology (Scrum Framework) to meet project timelines and deliver high-quality solutions.",
+                        "Successfully integrated Google Maps API with AutoComplete/Autosuggest functionality."
+                    ]
+                }
+            ];
+
+            const skillCategoriesContainer = document.getElementById('skill-categories');
+            const skillListContainer = document.getElementById('skill-list');
+            
+            function displaySkills(category) {
+                skillListContainer.innerHTML = '';
+                const skills = skillsData[category];
+                skills.forEach(skill => {
+                    const li = document.createElement('li');
+                    li.className = 'bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full';
+                    li.textContent = skill;
+                    skillListContainer.appendChild(li);
+                });
+            }
+
+            Object.keys(skillsData).forEach((category, index) => {
+                const button = document.createElement('button');
+                button.className = 'skill-category-btn px-4 py-2 text-sm font-semibold rounded-full transition';
+                button.textContent = category;
+                if (index === 0) {
+                    button.classList.add('bg-sky-600', 'text-white');
+                } else {
+                    button.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-200', 'shadow-sm');
+                }
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.skill-category-btn').forEach(btn => {
+                        btn.classList.remove('bg-sky-600', 'text-white');
+                        btn.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-200');
+                    });
+                    button.classList.add('bg-sky-600', 'text-white');
+                    button.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-200');
+                    displaySkills(category);
+                });
+                skillCategoriesContainer.appendChild(button);
+            });
+
+            displaySkills(Object.keys(skillsData)[0]);
+
+            const timelineContainer = document.getElementById('timeline-container');
+            experienceData.forEach((job, index) => {
+                const isLast = index === experienceData.length - 1;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `timeline-item relative ${isLast ? '' : 'pb-12'}`;
+
+                itemDiv.innerHTML = `
+                    <div class="absolute left-3 top-2 w-0.5 h-full ${isLast ? 'h-0' : 'bg-slate-200'}"></div>
+                    <div class="relative flex items-start group cursor-pointer">
+                        <div class="bg-white border-2 border-sky-500 rounded-full h-6 w-6 flex items-center justify-center">
+                            <div class="bg-sky-500 rounded-full h-3 w-3"></div>
+                        </div>
+                        <div class="ml-6 flex-1">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-bold text-slate-800">${job.role}</h4>
+                                <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded-full">${job.period}</span>
+                            </div>
+                            <p class="text-md font-semibold text-sky-700">${job.company}</p>
+                            <div class="details mt-4">
+                                <ul class="space-y-2 list-disc list-inside text-slate-600">
+                                    ${job.details.map(d => `<li>${d}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                timelineContainer.appendChild(itemDiv);
+            });
+            
+            document.querySelectorAll('.timeline-item .group').forEach(item => {
+                item.addEventListener('click', () => {
+                    item.parentElement.classList.toggle('open');
+                });
+            });
+
+
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            const impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Account Opening Time Reduction', 'Application Performance Boost'],
+                    datasets: [{
+                        label: '% Improvement',
+                        data: [40, 30],
+                        backgroundColor: [
+                            'rgba(14, 165, 233, 0.6)',
+                            'rgba(51, 65, 85, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(14, 165, 233, 1)',
+                            'rgba(51, 65, 85, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
